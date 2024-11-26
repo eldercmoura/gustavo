@@ -7,8 +7,7 @@ import seaborn as sns
 # Função para carregar os dados do arquivo CSV
 @st.cache_data
 def carregar_dados():
-        df = pd.read_csv("./.ArquivosTratados/dados_tratados.csv", sep=";", encoding="utf-8")
-save_to_db(df)
+    caminho_arquivo = "./ArquivosTratados/dados_tratados.csv"
     
     # Verificar se o arquivo existe
     if not os.path.exists(caminho_arquivo):
@@ -60,11 +59,4 @@ else:
     bins = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]  # Exemplo de intervalos de preços
     dados['intervalo_preco'] = pd.cut(dados['preco2'], bins=bins)
     fig, ax = plt.subplots()
-    dados['intervalo_preco'].value_counts().sort_index().plot(kind='bar', ax=ax)
-    st.pyplot(fig)
-
-    # Gráfico de Pizza (distribuição percentual dos preços)
-    st.write("### Gráfico de Pizza de 'preco2'")
-    fig, ax = plt.subplots()
-    dados['intervalo_preco'].value_counts().sort_index().plot(kind='pie', ax=ax, autopct='%1.1f%%')
-    st.pyplot(fig)
+    dados['intervalo_preco'].value_counts().sort
