@@ -1,16 +1,13 @@
 import pandas as pd
 import streamlit as st
-import requests
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Função para carregar os dados diretamente da API Flask
+# Função para carregar os dados do arquivo CSV
 @st.cache
 def carregar_dados():
-    url = 'http://127.0.0.1:5000/dados'  # URL da API Flask
-    response = requests.get(url)
-    dados = response.json()
-    df = pd.DataFrame(dados)
+    caminho_arquivo = '1_bases_tratadas/dados_tratados.csv'  # Caminho para o arquivo CSV
+    df = pd.read_csv(caminho_arquivo)
     
     # Converte a coluna 'preco2' para valores numéricos, forçando valores não numéricos a se tornarem NaN
     df['preco2'] = pd.to_numeric(df['preco2'], errors='coerce')
