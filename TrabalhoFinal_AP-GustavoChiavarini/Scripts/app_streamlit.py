@@ -32,7 +32,7 @@ st.write(f"- **Média**: {media:.2f}")
 st.write(f"- **Mediana**: {mediana:.2f}")
 st.write(f"- **Desvio Padrão**: {desvio_padrao:.2f}")
 
-# Gráfico de Histogram
+# Gráfico de Histograma
 st.write("### Histograma de 'preco2'")
 fig, ax = plt.subplots()
 sns.histplot(dados['preco2'].dropna(), kde=True, ax=ax)  # Remove NaN antes de plotar
