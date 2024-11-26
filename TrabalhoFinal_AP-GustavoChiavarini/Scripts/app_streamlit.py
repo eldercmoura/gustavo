@@ -7,7 +7,8 @@ import seaborn as sns
 # Função para carregar os dados do arquivo CSV
 @st.cache_data
 def carregar_dados():
-    caminho_arquivo = ".ArquivosTratados/dados_tratados.csv"
+   df = pd.read_csv("./.ArquivosTratados/dados_tratados.csv", sep=";", encoding="utf-8")
+save_to_db(df)
     
     # Verificar se o arquivo existe
     if not os.path.exists(caminho_arquivo):
