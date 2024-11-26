@@ -6,8 +6,8 @@ import seaborn as sns
 # Função para carregar os dados do arquivo CSV
 @st.cache_data
 def carregar_dados():
-    url = r'C:\Users\usuario\Documents\trabalho\WebDataApplication-master\1_bases_tratadas\dados_tratados.csv'
-    df = pd.read_csv(url)
+    df = pd.read_csv("./ArquivosTratados/dados_tratados.csv", sep=";", encoding="utf-8")
+save_to_db(df)
     
     # Converte a coluna 'preco2' para valores numéricos, forçando valores não numéricos a se tornarem NaN
     df['preco2'] = pd.to_numeric(df['preco2'], errors='coerce')
