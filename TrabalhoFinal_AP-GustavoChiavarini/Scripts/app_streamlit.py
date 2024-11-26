@@ -7,7 +7,7 @@ import seaborn as sns
 # Função para carregar os dados do arquivo CSV
 @st.cache_data
 def carregar_dados():
-    caminho_arquivo = "./dados_tratados.csv"
+    caminho_arquivo = "..ArquivosTratados/dados_tratados.csv"
     
     # Verificar se o arquivo existe
     if not os.path.exists(caminho_arquivo):
