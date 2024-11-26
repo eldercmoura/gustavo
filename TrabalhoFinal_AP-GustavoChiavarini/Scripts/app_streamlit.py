@@ -7,7 +7,10 @@ import seaborn as sns
 @st.cache_data
 def carregar_dados():
     df = pd.read_csv("./ArquivosTratados/dados_tratados.csv", sep=";", encoding="utf-8")
-save_to_db(df)
+    
+    # Certifique-se de que a função save_to_db está corretamente definida
+    # Se não tiver sido definida, comente ou remova a linha a seguir.
+    # save_to_db(df)
     
     # Converte a coluna 'preco2' para valores numéricos, forçando valores não numéricos a se tornarem NaN
     df['preco2'] = pd.to_numeric(df['preco2'], errors='coerce')
@@ -46,4 +49,14 @@ st.pyplot(fig)
 
 # Gráfico de Barra (utilizando a contagem de preços por intervalos)
 st.write("### Gráfico de Barras de Contagem de Intervalos de 'preco2'")
-bins
+bins = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]  # Exemplo de intervalos de preços
+dados['intervalo_preco'] = pd.cut(dados['preco2'], bins=bins)
+fig, ax = plt.subplots()
+dados['intervalo_preco'].value_counts().sort_index().plot(kind='bar', ax=ax)
+st.pyplot(fig)
+
+# Gráfico de Pizza (distribuição percentual dos preços)
+st.write("### Gráfico de Pizza de 'preco2'")
+fig, ax = plt.subplots()
+dados['intervalo_preco'].value_counts().sort_index().plot(kind='pie', ax=ax, autopct='%1.1f%%')
+st.pyplot(fig)
