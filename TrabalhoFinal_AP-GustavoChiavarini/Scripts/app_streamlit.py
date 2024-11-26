@@ -6,7 +6,7 @@ import seaborn as sns
 # Função para carregar os dados do arquivo CSV
 @st.cache
 def carregar_dados():
-    caminho_arquivo = '1_bases_tratadas/dados_tratados.csv'  # Caminho para o arquivo CSV
+    caminho_arquivo = './1_bases_tratadas/dados_tratados.csv'  # Caminho para o arquivo CSV
     df = pd.read_csv(caminho_arquivo)
     
     # Converte a coluna 'preco2' para valores numéricos, forçando valores não numéricos a se tornarem NaN
