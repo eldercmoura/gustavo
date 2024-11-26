@@ -4,16 +4,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Função para carregar os dados do arquivo CSV
-@st.cache
+@st.cache_data
 def carregar_dados():
-    caminho_arquivo = './1_bases_tratadas/dados_tratados.csv'  # Caminho para o arquivo CSV
-    df = pd.read_csv(caminho_arquivo)
-    
-    # Converte a coluna 'preco2' para valores numéricos, forçando valores não numéricos a se tornarem NaN
+    url = r'C:\Users\usuario\Documents\trabalho\WebDataApplication-master\1_bases_tratadas\dados_tratados.csv'
+    df = pd.read_csv(url)
     df['preco2'] = pd.to_numeric(df['preco2'], errors='coerce')
-    
-    return df
-
+    return df
 # Carregar os dados
 dados = carregar_dados()
 
